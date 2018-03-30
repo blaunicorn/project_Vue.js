@@ -8,7 +8,17 @@ const store = new Vuex.Store({
   state: {
     position: 0,
     photo_position: 0,
-    from_home: true
+    from_home: true,
+    loading: false,
+    isShowTabbar: true,
+    loginInfo: {
+      avatarUrl: null,
+      id: null,
+      loginname: '',
+      accessToken: ''
+    },
+    direction: 'forward',
+    isAgainLoading: false
   },
   mutations: {
     SAVE_POSITION (state, p) {

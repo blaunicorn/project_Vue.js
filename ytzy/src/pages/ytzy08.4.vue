@@ -40,7 +40,7 @@
     use-pulldown :pulldown-config="pulldownDefaultConfig" @on-pulldown-loading="refresh"
     :lock-x= "true"  :scrollbar-x="false" ref="scrollerBottom" height="-40"  >
         <!-- 轮播样式  -->
-          <swiper v-model="index" height="1200px"  ref="swipereee" :show-dots="false">
+          <swiper v-model="index" :threshold="10" height="1200px"  ref="swipereee" :show-dots="false">
         <swiper-item v-for="(item, index1) in list2" :key="index1">          
            <div class="tab-swiper vux-center" v-if = "index1 = index">
              <div style="padding: 10px 0">

@@ -9,9 +9,18 @@
     <div v-if = "getData2"><swiper :list="imgSwiper" :index="demo07_index"  auto style="width:100%;margin:0 auto;" height="180px" dots-class="custom-bottom" dots-position="center"></swiper>
     </div>
     <div v-else><img class="img1" src="../assets/ytzy28-1.jpg"></div>
+
+        <div v-if="getData" class="info">
+          <group label-width="4.5em" label-margin-right="2em" label-align="right" >
+            <x-input class="income" type= "number" title="年  收  入" placeholder="请输入年收入" v-model="income"></x-input>
+            <selector class="section" title="党员类别" placeholder="请选择党员类别"   :options="list" v-model="section"></selector>
+          </group>
+          <x-button class="submit" @click.native = "postQuiz" >计算</x-button>
+        </div>    
+
     <div class="border">
       <div class="flex">
-        <div class="word">党员收缴标准2017计算方法</div>
+        <div class="word">党员收缴标准(2017)计算方法</div>
       </div>
       <div class="line"></div>
       <div class="word-contant"><br>党费收缴总则<br></div>
@@ -40,18 +49,26 @@
   </div>
 </template>
 <script>
-  import { XHeader, Cell, Swiper } from 'vux'
+  import { XHeader, Cell, Swiper, Group, XInput, Selector, XButton } from 'vux'
   export default {
     components: {
       XHeader,
       Cell,
-      Swiper
+      Swiper,
+      Group,
+      XInput,
+      Selector,
+      XButton
     },
     data () {
       return {
         getData2: false,
         demo07_index: 0,
-        imgSwiper: []
+        imgSwiper: [],
+        getData: true,
+        income: '',
+        section: '0',
+        list: [{key: '0', value: '请选择党员类别'}, {key: '1', value: '工人党员和一般管理岗党员'}, {key: '2', value: '科级干部党员'}, {key: '3', value: '处级干部党员'}]
       }
     },
     created () {
@@ -79,6 +96,41 @@
         if (index === 9) {
           this.$router.push('/ytzy17')
         }
+      },
+      postQuiz () {
+        if (this.getData) {
+          console.log('get')
+          if (this.income === '' || this.section === '') {
+            this.showPluginAuto('提示', '年收入、党员类别不能为空...')
+          } else {
+            let that = this
+            this.$axios.get(this.GLOBAL.URL, {
+              params: {
+                r: 'party-membership-dues/get-dues-monthly',
+                sid: '12345qwe',
+                name: '张三',
+                type: that.section,
+                income: that.income
+              }
+            }).then(response => {
+              console.log(response.data)
+              if (response.data.result === 'OK') {
+                that.showPluginAuto('您应当月缴党费：' + response.data.monthly_payment + '元')
+              } else {
+                that.showPluginAuto('计算失败，年收入或党员类别不正确', response.data.extension_error_msg)
+              }
+            })
+          }
+        }
+      },
+      showPluginAuto (t, c) {
+        this.$vux.alert.show({
+          title: t,
+          content: c
+        })
+        setTimeout(() => {
+          this.$vux.alert.hide()
+        }, 25000)
       }
     }
   }
@@ -145,5 +197,25 @@
   .line{
     border-bottom: solid 3px #F22222;
     width: 100%;
-  }  
+  }
+    .info{
+      margin-left: 50px;
+      margin-right: 50px;
+      margin-top: 10px;
+    }
+    .income{
+      font-size: 14px;
+    }  
+    .section{
+      font-size: 14px;
+    }
+    .submit{
+      background-color: #2992f2;
+      width: 165px;
+      height: 30px;
+      color: white;
+      font-size: 14px;
+      line-height: 30px;
+      margin-top: 10px;
+    }
 </style>
