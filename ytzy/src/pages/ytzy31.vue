@@ -13,31 +13,91 @@
           <div class="flex">
         <div class="word">入党流程说明</div>
       </div>
-      <div class="border">
+      <div class="border"  >
         <details class="menu" open>
           <summary class = "background0">入党申请人</summary>
+          <div v-if = "getData  && ( key <= 1) " v-for="(news, key) in newsContent">
+          <router-link :to="'/ytzy09/' + news.id">
+          <!-- 圆圈数字 -->
+          <div class ="background1" >
+         <span class = "backnumber">{{news.title.substr(0, 2)}}</span>
+         <div class = "x-line"></div>
+         </div>
+         <!-- 数字后的文字 通过substr 截取 -->
+         <div class ="background2">
+         <span class = "backword">{{news.title.substr(3)}}</span>
+         </div>
+          </router-link>
+         <div class = "x-line" v-if = "key < 1 "></div>
+          </div>  
+        </details>
+        <div class="line4"></div>
+        <details class="menu" close>
+          <summary class = "background0">入党积极分子</summary>
+          <div v-if = "getData  && ( key > 1) && (key <= 5) " v-for="(news, key) in newsContent">
+          <router-link :to="'/ytzy09/' + news.id">
           <div class ="background1">
-         <span class = "backnumber">01</span>
+         <span class = "backnumber" v-text = "news.title.substr(0, 2)">01</span>
          <div class = "x-line"></div>
          </div>
          <div class ="background2">
-         <span class = "backword">提交入党申请书</span>
-         </div>   
+         <span class = "backword" v-text = "news.title.substr(3)">提交入党申请书</span>
+         </div>
+          </router-link>
+         <div class = "x-line" v-if = "key < 5 "></div>
+         </div>
         </details>
-        <div class="line4"></div>        
+        <div class="line4"></div>
+        <details class="menu" close>
+          <summary class = "background0">发展对象</summary>
+          <div v-if = "getData  && ( key > 5) && (key <= 10) " v-for="(news, key) in newsContent">
+          <router-link :to="'/ytzy09/' + news.id">
+          <div class ="background1">
+         <span class = "backnumber" v-text = "news.title.substr(0, 2)">01</span>
+         <div class = "x-line"></div>
+         </div>
+         <div class ="background2">
+         <span class = "backword" v-text = "news.title.substr(3)">提交入党申请书</span>
+         </div>
+          </router-link>
+         <div class = "x-line" v-if = "key < 10 "></div>
+          </div>
+        </details>
+        <div class="line4"></div>
+        <details class="menu" close>
+          <summary class = "background0">预备党员</summary>
+          <div v-if = "getData  && ( key > 10) && (key <= 17) " v-for="(news, key) in newsContent">
+          <router-link :to="'/ytzy09/' + news.id">
+          <div class ="background1">
+         <span class = "backnumber" v-text = "news.title.substr(0, 2)">01</span>
+         <div class = "x-line"></div>
+         </div>
+         <div class ="background2">
+         <span class = "backword" v-text = "news.title.substr(3)">提交入党申请书</span>
+         </div>
+          </router-link>
+         <div class = "x-line" v-if = "key < 17 "></div>
+          </div>
+        </details>
+        <div class="line4"></div>
+        <details class="menu" close>
+          <summary class = "background0">预备党员转正</summary>
+          <div v-if = "getData  && ( key > 17) && (key <= 24) " v-for="(news, key) in newsContent">
+          <router-link :to="'/ytzy09/' + news.id">
+          <div class ="background1">
+         <span class = "backnumber" v-text = "news.title.substr(0, 2)">01</span>
+         <div class = "x-line"></div>
+         </div>
+         <div class ="background2">
+         <span class = "backword" v-text = "news.title.substr(3)">提交入党申请书</span>
+         </div>
+          </router-link>
+         <div class = "x-line" v-if = "key < 24 "></div>
+          </div>
+        </details>
+        <div class="line4"></div>
       </div>
       <div>
-        <details class="menu" close>
-          <summary>姓名B</summary>
-        </details>
-      </div>
-      <div class="line4"></div>
-      <div>
-        <details class="menu" close>
-          <summary>姓名C</summary>
-        </details>
-
-      <div class="line4"></div>
     </div>
   </div>
 </template>
@@ -55,27 +115,29 @@
         demo07_index: 0,
         imgSwiper: [],
         getData: false,
+        newsContent: [],
         demo1: {}
       }
     },
     created () {
       let that = this
       // 轮播图
-      this.$axios.get(this.GLOBAL.URL, {
-        params: {
-          r: 'carousel/get-carousels-by-category',
-          sid: '12345qwe',
-          category: '9'
-        }
-      }).then((response) => {
-        console.log(response.data)
-        that.imgSwiper = response.data.carousels
-        let i
-        for (i = 0; i < that.imgSwiper.length; i++) {
-          that.imgSwiper[i].img = that.GLOBAL.URL + that.imgSwiper[i].img
-        }
-        that.getData2 = true
-      })
+      // this.$axios.get(this.GLOBAL.URL, {
+      //   params: {
+      //     r: 'carousel/get-carousels-by-category',
+      //     sid: '12345qwe',
+      //     category: '9'
+      //   }
+      // }).then((response) => {
+      //   console.log(response.data)
+      //   that.imgSwiper = response.data.carousels
+      //   let i
+      //   for (i = 0; i < that.imgSwiper.length; i++) {
+      //     that.imgSwiper[i].img = that.GLOBAL.URL + that.imgSwiper[i].img
+      //   }
+      //   that.getData2 = true
+      // })
+      // 数据列表
       this.$axios.get(this.GLOBAL.URL, {
         params: {
           r: 'summary-article/get-article-list',
@@ -152,10 +214,11 @@
       background: #fcfce8;
       height: 30px;
       text-indent:20px;
+      margin-bottom: 20px;
     }
   .background1 {
     margin:0 auto;
-    margin-top: 20px;
+    margin-top: 0px;
     width: 30px;
     height: 30px;
     background-color: #fcfce8;

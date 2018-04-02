@@ -25,8 +25,8 @@
         <router-link :to="'/ytzy09/' + news.id">
         <div class="circle"  >
           <div class="meet" v-text = "news.title">支部党员第一次大会</div>
-          <div class="flex" >
-            <div v-for = "n in 3">
+          <div class="flex-zhibushenghuo" >
+            <div class = "img-wrap" v-for = "n in 3">
               <img class="cir-pic" :src="newsContent[key].articlePictures[n-1].url"></div>
           </div>
           <div class="date" v-text = "news.create_at.substr(0, 10)">2018-02-02</div>
@@ -65,7 +65,7 @@
     </div>
   </div>
 </template>
-<script>
+<script scoped>
   import { XHeader, Cell, Tab, TabItem, Swiper, SwiperItem, Scroller } from 'vux'
   const list = () => ['支部党员大会', '支部委员会', '党小组会 ', '党课']
   const pulldownDefaultConfig = {
@@ -278,13 +278,16 @@
     margin-top: 10px;
     color: #000000;
   }
-  .flex{
+  .flex-zhibushenghuo{
     display: flex;
     justify-content: space-between;
   }
+  .img-wrap{
+   width:100%;
+  }
   .cir-pic{
-    width: 80%;
-    height: 80px;
+    width: 96%;
+    height: 96px;
   }
   .date{
     font-size:12px;

@@ -12,8 +12,8 @@
     <div class="border">
           <div class = "box" v-if = "getData" v-for="(news, key) in newsContent" :key = "key">
                  <router-link :to="'/ytzy09/' + news.id">
-          <div class="flex">
-        <div class="word"><img class="mini-pic" src="../assets/ytzy30-1.png">{{news.title}}</div>
+          <div class="flex-zhibu">
+        <div class="word"><img class="mini-pic" src="../assets/ytzy30-1.png">&nbsp;{{news.title}}</div>
       </div>
       <div class="line"></div>
       </router-link>
@@ -95,16 +95,15 @@
     border-right: 1px solid #BBBBBB;
     border-bottom: 1px solid #BBBBBB;
   }
-  .flex{
+  .flex-zhibu{
     display: flex;
-    align-items: center;
     justify-content: left;
   }
   .word{
    text-align: left;
     font-size: 20px;
     color:#000000 ;
-    margin-left: 10px;
+    margin-left: 15px;
     margin-top: 10px;
     margin-bottom: 10px
   }

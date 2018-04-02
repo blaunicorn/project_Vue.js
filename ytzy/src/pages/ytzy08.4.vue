@@ -38,7 +38,7 @@
              <!-- 刷新样式 -->
             <scroller use-pullup :pullup-config="pullupDefaultConfig" @on-pullup-loading="loadMore"
     use-pulldown :pulldown-config="pulldownDefaultConfig" @on-pulldown-loading="refresh"
-    :lock-x= "true"  :scrollbar-x="false" ref="scrollerBottom" height="-40"  >
+    :lock-y= "locky"  :scrollbar-x="false" ref="scrollerBottom" height="-40"  >
         <!-- 轮播样式  -->
           <swiper v-model="index" :threshold="10" height="1200px"  ref="swipereee" :show-dots="false">
         <swiper-item v-for="(item, index1) in list2" :key="index1">          
@@ -138,6 +138,7 @@
         list2: list(),
         demo2: '要闻',
         index: 0,
+        locky: true,
         newlist: [],
         oldlist: [],
         newsurl: [],
@@ -191,6 +192,7 @@
         // 当切换到时
         if (newVal === 1) {
           console.log('index 变成：', this.index)
+          this.locky = true
           let that = this
           that.$axios.get(this.GLOBAL.URL, {
             params: {
@@ -221,6 +223,7 @@
               top: 0
             })
           })
+          this.locky = false
           console.log('this.newsContent1 变成：', this.newsContent)
         }
         if (newVal === 2) {
