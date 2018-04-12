@@ -8,8 +8,7 @@
       </a><p class="title"  v-text = "newscat[newsContent.cat1]">要闻</p>
       <a slot="right">
         <cell class="cell">
-          <i class="fa fa-search">
-          </i>
+
         </cell>
       </a>
     </x-header>

@@ -8,13 +8,13 @@
       </a><p class="title">视频学习</p>
       <a slot="right">
         <cell class="cell">
-          <i class="fa fa-search">
+          <i class="fa fa-search" @click="search">
           </i>
         </cell>
       </a>
     </x-header>
     <div>
-      <tab style="background-color: #F5F5F5" :line-width=2 active-color='red'badge-label="12px;" v-model="index">
+      <tab style="background-color: #F5F5F5" :scroll-threshold="5" :line-width=2 active-color='red'badge-label="12px;" v-model="index">
         <tab-item class="vux-center" style = "font-size: 3vw;" :selected="demo2 === item" v-for="(item, index) in list2" @on-item-click="onItemClick" :key="index">{{item}}</tab-item>
       </tab>
       <scroller use-pullup :pullup-config="pullupDefaultConfig" @on-pullup-loading="loadMore"
@@ -139,6 +139,9 @@
       })
     },
     methods: {
+      search () {
+        this.$router.push('/search.1')
+      },
       onItemClick (index) {
         console.log('on item click:', index)
         if (index === 0) {

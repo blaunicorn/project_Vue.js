@@ -8,8 +8,7 @@
       </a><p class="title">党务公开</p>
       <a slot="right">
         <cell class="cell">
-          <i class="fa fa-search">
-          </i>
+          <!-- <i class="fa fa-search"></i> -->
         </cell>
       </a>
     </x-header>

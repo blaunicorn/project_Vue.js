@@ -8,7 +8,7 @@
       </a><p class="title">成果展示</p>
       <a slot="right">
         <cell class="cell">
-          <i class="fa fa-search">
+          <i class="fa fa-search" @click="search">
           </i>
         </cell>
       </a>
@@ -159,6 +159,10 @@
       })
     },
     methods: {
+      search () {
+        console.log('search')
+        this.$router.push('/search')
+      },
       onItemClick (index) {
         console.log('on item click:', index)
         if (index === 0) {

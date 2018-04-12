@@ -8,7 +8,7 @@
       </a><p class="title">学习园地</p>
       <a slot="right">
         <cell class="cell">
-          <i class="fa fa-search">
+          <i class="fa fa-search" @click="search">
           </i>
         </cell>
       </a>
@@ -137,6 +137,9 @@
       })
     },
     methods: {
+      search () {
+        this.$router.push('/search.1')
+      },
       onItemClick (index) {
         if (index === 9) {
           this.$router.push('/ytzy11')

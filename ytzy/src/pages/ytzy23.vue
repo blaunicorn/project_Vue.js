@@ -8,7 +8,7 @@
       </a><p class="title">支部生活</p>
       <a slot="right">
         <cell class="cell">
-          <i class="fa fa-search">
+          <i class="fa fa-search" @click="search">
           </i>
         </cell>
       </a>
@@ -91,6 +91,9 @@
       })
     },
     methods: {
+      search () {
+        this.$router.push('/search.2')
+      },
       onItemClick (index) {
         if (index === 9) {
           this.$router.push('/ytzy17')

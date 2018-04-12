@@ -25,6 +25,8 @@ export default new Router({
     makePath('h03'),
     makePath('slindex'),
     makePath('search'),
+    makePath('search.1'),
+    makePath('search.2', true),
     makePath('ytzy02'),
     makePath('ytzy03'),
     makePath('ytzy04'),
@@ -32,6 +34,7 @@ export default new Router({
     makePath('ytzy06'),
     makePath('ytzy07'),
     makePath('ytzy08'),
+    makePath('ytzy08.5'),
     makePath('ytzy02.1'),
     makePath('ytzy10'),
     makePath('ytzy11'),
@@ -81,7 +84,10 @@ export default new Router({
     {
       path: '/ytzy09/:article_id',
       name: 'ytzy09',
-      component: _import('ytzy09')
+      component: _import('ytzy09'),
+      meta: {
+        keepAlive: true
+      }
     },
     makePath('h05'),
     makeDir('p02'),

@@ -7,40 +7,38 @@
         </x-header>
 
         <div class="search-keyword">
-            <input class="search-input" type="text" v-model.trim="searchval" @keyup.enter="search" placeholder="请输入搜索内容">
-            <span class="history" @click="history">历史记录</span>
+            <input class="search-input" type="text" v-model.trim="searchval" @keyup.enter="search()" placeholder="请输入搜索内容">
+            <span class="history" @click="search()">搜索</span>
         </div>
 
-        <div class="news-wrapper" >
-
-            <ul class="news-content" >
+        <div class="news-wrapper"  v-if = "searchval" >
+          
+            <ul class="news-content" v-if = "searchlist.length">
                 <!--:to = "'/newsDetails' + item.seo_url"-->
                 <router-link class="news-item" v-for="(item,index) in searchlist"
                              :to="{
-                                path:'/newsDetails' + item.seo_url,
-                                query:{newsItem:JSON.stringify(item)}
+                                path:'/ytzy09/' + item.id
                              }"
                              tag='li'
                              :key='index'
-                             v-if="item.abstract"
+                             
                 >
-                    <p>{{item.seo_url}}</p>
                     <p class="news-title" v-html="replace(item.title)"></p>
                     <!--此处不能使用 过滤器，因其不能转换html标签-->
                     <!--<p class="news-title">{{item.title | replace}}</p>-->
-                    <ul class="img-wrapper" v-if="item.image_list">
-                        <li v-for="(item,index) in item.image_list">
-                            <img v-lazy="item['url']"  alt="">
+                    <!-- <ul class="img-wrapper" v-if="item.articlePictures">
+                        <li v-for="(item,index) in item.articlePictures">
+                             <img :src="'https://zongyuan.yimi100.top:8080/' + item['url']"  alt="">                         
                         </li>
-                    </ul>
-                    <div class="bottom-title">
+                    </ul> -->
+                    <div class="cir-date">{{item.create_at.substr(0, 10)}}</div>
+                    <!-- <div class="bottom-title">
                         <span class="avIcon" v-show="item.label==='广告'">广告</span>
                         <span class="writer">{{item.media_name}}</span> &nbsp;&nbsp;
                         <span class="comment_count">评论&nbsp;{{item.comment_count}}</span>
-                        <!--<span class="datetime">{{item.datetime|date}}</span>-->
-                    </div>
+                        <span class="datetime">{{item.datetime|date}}</span>
+                    </div> -->
                 </router-link>
-
             </ul>
             <!-- 路由外联 -->
             <router-view></router-view>
@@ -63,7 +61,25 @@ export default {
       searchlist: []
     }
   },
-  created () {},
+  created () {
+    if (localStorage.getItem('input0')) {
+      this.searchval = localStorage.getItem('input0')
+      let input = this.searchval
+      let self = this
+      this.$axios.get(this.GLOBAL.URL, {
+        params: {
+          r: 'search/index-search',
+          sid: '12345qwe',
+          search: input
+        }
+      }).then((response) => {
+        console.log(response.data)
+        self.searchlist = response.data.search_result_list
+        console.log('读取结果是', self.searchlist)
+        window.localStorage.setItem('input0', input)
+      })
+    }
+  },
   mounted () {},
   methods: {
     replace (title) {
@@ -77,21 +93,42 @@ export default {
       }
     },
     search () {
+      console.log('搜索')
       let input = this.searchval
       let self = this
-      let url =
-        'https://www.toutiao.com/search_content/?offset=0&format=json&keyword=' +
-        input +
-        '&autoload=true&count=20&cur_tab=1'
-      this.$axios.get(
-        url,
-        function (data) {
-          self.searchlist = data.data
-        },
-        function (msg) {
-          alert(msg)
+      // let url =
+      //   'https://zongyuan.yimi100.top:8080/index.php?r=search/index-search&sid=12345qwe&search=' +
+      //   input
+      // this.$axios.get(
+      //   url,
+      //   function (data) {
+      //     self.searchlist = data.data
+      //     console.log('读取结果是', self.searchlist)
+      //   },
+      //   function (msg) {
+      //     alert(msg)
+      //   }
+      // )
+      // let that = this
+      this.$axios.get(this.GLOBAL.URL, {
+        params: {
+          r: 'search/index-search',
+          sid: '12345qwe',
+          search: input
         }
-      )
+      }).then((response) => {
+        console.log(response.data)
+        self.searchlist = response.data.search_result_list
+        console.log('读取结果是', self.searchlist)
+        window.localStorage.setItem('input0', input)
+        // let i
+        // for (i = 0; i < self.searchlist.length; i++) {
+        //   self.newsurl[i] = self.GLOBAL.URL + self.searchlist[i].articlePictures[0].url
+        // }
+      })
+      .catch((error) => {
+        console.log(error)
+      })
     },
     history () {
       console.log('history')
@@ -150,25 +187,34 @@ export default {
       background-color: #fff;
       .news-item {
         .news-title {
-          line-height: 0.4rem;
+          line-height: 0.8rem;
         }
         padding: 0.2rem 0.4rem;
-        font-size: 0.32rem;
+        font-size: 0.8rem;
         color: #585151;
         border-bottom: 1px solid #eee;
         .img-wrapper {
           display: flex;
-          margin-top: 0.1rem;
+          margin-top: 0.3rem;
           justify-content: space-between;
+          overflow: hidden;
+          text-overflow: ellipsis;
+         white-space: nowrap;          
           li {
             width: 2.13rem;
-            height: 1.5rem;
+            height: 3rem;
             /*flex: 1;*/
             img {
               width: 100%;
             }
           }
         }
+        .cir-date{
+          margin-left: 70%;
+          font-size:10px;
+          color: #828282;
+          margin-top: 15px;
+       }
         .bottom-title {
           font-size: 10px;
           color: #b5b5b5;
