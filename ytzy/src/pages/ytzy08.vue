@@ -14,9 +14,10 @@
       </a>
     </x-header>
     <div>
-      <tab style="background-color: #F5F5F5" :line-width=2 active-color='red'badge-label="12px;" v-model="index">
+      <tab style="background-color: #F5F5F5" :line-width=2 active-color='red' badge-label="12px;" v-model="index">
         <tab-item class="vux-center" :selected="demo2 === item" v-for="(item, index) in list2" @on-item-click="onItemClick" :key="index">{{item}}</tab-item>
       </tab>
+      <v-touch class = "controller" v-on:swipeleft = "onSwipeLeft" v-on:swiperight = "onSwipeRight">
     <scroller use-pullup :pullup-config="pullupDefaultConfig" @on-pullup-loading="loadMore"
     use-pulldown :pulldown-config="pulldownDefaultConfig" @on-pulldown-loading="refresh"
     lock-x ref="scrollerBottom" height="-68">
@@ -34,7 +35,7 @@
        <div class="cir-line"></div>
     </div>
     </div>
-   </scroller>
+   </scroller></v-touch>
       <!--<swiper v-model="index" height="" :show-dots="false">
         <swiper-item v-for="(item, index) in list2" :key="index">
           <div class="tab-swiper vux-center" > 
@@ -152,6 +153,14 @@
       })
     },
     methods: {
+      onSwipeLeft () {
+        console.log('左边')
+        this.$router.push('/ytzy06')
+      },
+      onSwipeRight () {
+        console.log('右边')
+        this.$router.push('/ytzy02')
+      },
       search () {
         console.log('search')
         this.$router.push('/search')

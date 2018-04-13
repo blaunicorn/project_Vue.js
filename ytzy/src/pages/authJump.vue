@@ -1,7 +1,7 @@
 <template>
     <div>
-        <x-header class="x-header" :left-options="{showBack: false}">投票</x-header>
-        <div><img class="pic1" src="../assets/tp.jpg"></div>
+        <!-- <x-header class="x-header" :left-options="{showBack: false}">投票</x-header>
+        <div><img class="pic1" src="../assets/tp.jpg"></div> -->
         {{brow}}
     </div>
 </template>
