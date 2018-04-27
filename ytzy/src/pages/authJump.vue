@@ -19,7 +19,7 @@
     },
     created () {
       this.brow = 'weixin2'
-      this.$router.push({name: 'author', params: {sid: 'abcde', url: 'tp01'}})
+      this.$router.push({name: 'author', params: {sid: '12345qwe', url: 'tp01'}})
     }
   }
 </script>

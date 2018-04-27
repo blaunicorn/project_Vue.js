@@ -58,7 +58,7 @@
       this.$axios.get(this.GLOBAL.URL, {
         params: {
           r: 'summary-article/get-article-info',
-          sid: '12345qwe',
+          sid: window.localStorage.sid,
           article_id: this.$route.params.article_id
         }
       }).then((response) => {

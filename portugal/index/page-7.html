@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>longquan</title>
+    <link rel="stylesheet" href="./css/bootstrap.min.css" type="text/css" media="screen" title="no title" charset="utf-8">
+    <link rel="stylesheet" href="./css/app.css" type="text/css" media="screen" title="no title" charset="utf-8">
+    <link rel="stylesheet" href="./css/swiper.min.css" type="text/css" media="screen" title="no title" charset="utf-8">
+    <style>
+
+.pc-slide {
+	width: 650px;
+	margin: 0 auto;
+}
+
+.view .swiper-container {
+  width: 650px;
+}
+
+.view .swiper-container img{
+  width:100%;
+}
+
+#mymodal{
+  top:60px;
+}
+
+.view .arrow-left {
+	background: url(images/index_tab_l.png) no-repeat left top;
+	position: absolute;
+	left: 10px;
+	top: 50%;
+	margin-top: -25px;
+	width: 28px;
+	height: 51px;
+	z-index: 10;
+}
+
+.view .arrow-right {
+	background: url(images/index_tab_r.png) no-repeat left bottom;
+	position: absolute;
+	right: 10px;
+	top: 50%;
+	margin-top: -25px;
+	width: 28px;
+	height: 51px;
+	z-index: 10;
+}
+
+.preview {
+	width: 100%;
+	margin-top: 10px;
+	position: relative;
+}
+
+.preview .swiper-container {
+	width: 430px;
+	height: 82px;
+	margin-left: 100px;
+}
+
+.preview .swiper-slide {
+	width: 87px;
+	height: 82px;
+	cursor:pointer;
+}
+
+.preview .slide6 {
+	width: 82px;
+}
+
+.preview .arrow-left {
+	position: absolute;
+	left: 57px;
+	top: 10px;
+	margin-top: -9px;
+	z-index: 10;
+}
+
+.preview .arrow-left img {
+  width:30px;
+}
+
+.preview .arrow-right img {
+  width:30px;
+}
+
+.preview .arrow-right {
+	position: absolute;
+	right: 70px;
+	top: 10%;
+	margin-top: -9px;
+	z-index: 10;
+}
+
+.preview img {
+	padding: 1px;
+}
+
+.preview .active-nav img {
+	padding: 0;
+	border: 2px solid #256d3d;
+}
+
+    </style>
+  </head>
+  <body>
+
+  <div class="container">
+     <header>
+       <div class="row">
+         <div id="logo">
+           <a href=""><img src="./img/logo.png"></a>
+         </div><!--/logo-->
+         <div class="col nav">
+           <a href="">Venerável Mestre Xuecheng</a>
+           <a href="">Templo Longquan</a>
+           <a href="">Intercâmbios Internacionais</a>
+           <a href="">Galeria de Fotos</a>
+           <a href="">Vídeos</a>
+         </div>
+       </div>
+     </header>
+  </div><!--/container-->
+
+  <!--中间主体内容-->
+  <div id="main"  class="container">
+       <div class="bread"> 
+        Venerável Mestre Xuecheng /   Caridade Ren Ai
+       </div>
+       <div class="title">
+         <i class="red-icon"></i>
+          Caridade Ren Ai
+         <i class="green-icon"></i>
+       </div>
+
+
+      <div class="photo-list2 mt-5">
+
+        <div class="row">
+
+         <div class="col-4 mb-4">
+           <div class="card">
+             <a href="javascript:showImg(0);void(0)">
+              <img class="card-img-top" src="./img/p7-1.png" alt="Card image cap">
+            </a>
+              <div class="card-body">
+                <a href="">
+                Uma palavra de Chan
+                </a>
+              </div>
+           </div>
+           </div><!--/col-4-->
+
+           
+         <div class="col-4 mb-4">
+           <div class="card">
+             <a href="javascript:showImg(1);void(0)">
+              <img class="card-img-top" src="./img/p7-2.png" alt="Card image cap">
+            </a>
+              <div class="card-body">
+                <a href="">
+                Uma palavra de Chan
+                </a>
+              </div>
+           </div>
+           </div><!--/col-4-->
+
+         <div class="col-4 mb-4">
+           <div class="card">
+             <a href="javascript:showImg(2);void(0)">
+              <img class="card-img-top" src="./img/p7-1.png" alt="Card image cap">
+            </a>
+              <div class="card-body">
+                <a href="">
+                Uma palavra de Chan
+                </a>
+              </div>
+           </div>
+           </div><!--/col-4-->
+
+         <div class="col-4 mb-4">
+           <div class="card">
+             <a href="">
+              <img class="card-img-top" src="./img/p7-3.png" alt="Card image cap">
+            </a>
+              <div class="card-body">
+                <a href="">
+                Uma palavra de Chan
+                </a>
+              </div>
+           </div>
+           </div><!--/col-4-->
+
+         </div>
+
+      </div>
+
+
+
+  </div><!--/main-->
+  <!--中间主体内容结束-->
+
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-auto mr-auto">
+           <img class="footer_logo" src="./img/footer_logo.png" />
+        </div>
+        <div class="footer_info col-auto">
+          Anschrift:<br />
+          Longquansi Str.27,<br /> 
+          Fenghuangling,<br /> 
+          Bezirk Haidian, 100194 Beijing, China<br />
+E-mail: lqtc@vip.163.com
+        </div>
+      <div>
+    </div>
+  </footer>
+
+  <div id="share">
+    <a href=""><img src="./img/wechat.png" /></a>
+    <a href=""><img src="./img/weibo.png" /></a>
+    <a href=""><img src="./img/email.png" /></a>
+    <a href=""><img src="./img/share.png" /></a>
+  </div>
+
+
+
+<div id="mymodal" class="modal" tabindex="-1" role="dialog">
+
+
+  <!--轮播-->
+   <div class="pc-slide">
+	<div class="view">
+		<div class="swiper-container">
+			<div class="swiper-wrapper">
+				<div class="swiper-slide">
+					<a href="http://bbs.swiper.com.cn/forum.php?mod=viewthread&tid=1598&extra=" target="_blank"><img src="./img/p7-1.png" alt=""></a>
+				</div>
+				<div class="swiper-slide">
+					<a href="http://bbs.swiper.com.cn/forum.php?mod=viewthread&tid=1598&extra=" target="_blank"><img src="./img/p7-2.png" alt=""></a>
+				</div>
+				<div class="swiper-slide">
+					<a href="http://bbs.swiper.com.cn/forum.php?mod=viewthread&tid=1598&extra=" target="_blank"><img src="./img/p7-3.png" alt=""></a>
+				</div>
+				<div class="swiper-slide">
+					<a href="http://bbs.swiper.com.cn/forum.php?mod=viewthread&tid=1598&extra=" target="_blank"><img src="./img/p7-1.png" alt=""></a>
+				</div>
+				<div class="swiper-slide">
+					<a href="http://bbs.swiper.com.cn/forum.php?mod=viewthread&tid=1598&extra=" target="_blank"><img src="./img/p7-2.png" alt=""></a>
+				</div>
+				<div class="swiper-slide">
+					<a href="http://bbs.swiper.com.cn/forum.php?mod=viewthread&tid=1598&extra=" target="_blank"><img src="./img/p7-3.png" alt=""></a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="preview">
+      <a class="arrow-left" href="#"><img  src="./img/arrow-left.png" /></a>
+		<a class="arrow-right" href="#"><img src="./img/arrow-right.png" /></a>
+		<div class="swiper-container">
+			<div class="swiper-wrapper">
+				<div class="swiper-slide active-nav">
+					<img src="./img/p7-1.png" alt="">
+				</div>
+				<div class="swiper-slide">
+					<img src="./img/p7-2.png" alt="">
+				</div>
+				<div class="swiper-slide">
+					<img src="./img/p7-3.png" alt="">
+				</div>
+				<div class="swiper-slide">
+					<img src="./img/p7-1.png" alt="">
+				</div>
+				<div class="swiper-slide">
+					<img src="./img/p7-2.png" alt="">
+				</div>
+				<div class="swiper-slide slide6">
+					<img src="./img/p7-3.png" alt="">
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!--轮播结束-->
+
+</div><!--/mymodal-->
+  
+  <script src="./js/jquery-3.3.1.slim.min.js"></script>
+  <script src="./js/popper.min.js"></script>
+  <script src="./js/bootstrap.min.js"></script>
+  <script src="./js/swiper.min.js"></script>
+
+
+<script>        
+
+
+  var viewSwiper = new Swiper('.view .swiper-container', {
+	on:{
+		slideChangeTransitionStart: function() {
+		    updateNavPosition()
+	    }
+	}
+})
+
+
+$('.view .arrow-left,.preview .arrow-left').on('click', function(e) {
+	e.preventDefault()
+	if (viewSwiper.activeIndex == 0) {
+		viewSwiper.slideTo(viewSwiper.slides.length - 1, 1000);
+		return
+	}
+	viewSwiper.slidePrev()
+})
+$('.view .arrow-right,.preview .arrow-right').on('click', function(e) {
+	e.preventDefault()
+	if (viewSwiper.activeIndex == viewSwiper.slides.length - 1) {
+		viewSwiper.slideTo(0, 1000);
+		return
+	}
+	viewSwiper.slideNext()
+})
+
+var previewSwiper = new Swiper('.preview .swiper-container', {
+	//visibilityFullFit: true,
+	slidesPerView: 'auto',
+	allowTouchMove: false,
+	on:{
+		tap: function() {
+		    viewSwiper.slideTo(previewSwiper.clickedIndex)
+	  }
+	}
+})
+
+function updateNavPosition() {
+		$('.preview .active-nav').removeClass('active-nav')
+		var activeNav = $('.preview .swiper-slide').eq(viewSwiper.activeIndex).addClass('active-nav')
+		if (!activeNav.hasClass('swiper-slide-visible')) {
+			if (activeNav.index() > previewSwiper.activeIndex) {
+				var thumbsPerNav = Math.floor(previewSwiper.width / activeNav.width()) - 1
+				previewSwiper.slideTo(activeNav.index() - thumbsPerNav)
+			} else {
+				previewSwiper.slideTo(activeNav.index())
+			}
+		}
+	}
+function showImg(){
+  //TODO 
+  $('#mymodal').modal('show');
+}
+</script>
+
+  </body>
+</html>

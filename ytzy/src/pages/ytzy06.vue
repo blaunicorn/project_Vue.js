@@ -131,7 +131,7 @@
       this.$axios.get(this.GLOBAL.URL, {
         params: {
           r: 'summary-article/get-article-list',
-          sid: '12345qwe',
+          sid: window.localStorage.sid,
           cat1: '2'
         }
       }).then((response) => {

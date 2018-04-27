@@ -24,13 +24,14 @@ import {AlertPlugin} from 'vux'
 // import echarts from 'echarts'
 
 // Vue.prototype.$echarts = echarts
-var VueTouch = require('vue-touch')
-Vue.use(VueTouch, {name: 'v-touch'})
 
 Vue.use(Vuex)
 Vue.prototype.GLOBAL = global_
 Vue.prototype.$axios = axios
 Vue.config.productionTip = false
+
+// var VueTouch = require('vue-touch')
+// Vue.use(VueTouch, {name: 'v-touch'})
 
 Vue.use(AlertPlugin)
 
@@ -52,7 +53,7 @@ router.beforeEach((to, from, next) => {
   if (typeof (window.localStorage.sid) === 'undefined' && to.path !== '/author' && to.name !== '/authJump' && to.meta.requireAuth) {
     // 用户使用后退返回到授权页，则默认回到首页
     // window.location.href = 'https://appserver.dqt.com.cn/kaohe/index.php?r=vote/wxmp-login&url=' + to.path
-    window.location.href = 'https://zongyuan.yimi100.top:8080/index.php?r=site/wxmp-login&url=' + to.path
+    window.location.href = 'https://zongyuan.yimi100.top/index.php?r=site/wxmp-login&url=' + to.path
     // next('/authJump')
     return false
   }

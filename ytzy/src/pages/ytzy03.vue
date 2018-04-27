@@ -42,7 +42,7 @@
       </div>
       </router-link>
     </div>
-          <tabbar class="x-header" :class="{'hide': !$store.getters.isShowTabbar}">
+          <tabbar style= "position: fixed;" class="x-header" :class="{'hide': !$store.getters.isShowTabbar}">
       <tabbar-item :selected="$route.name === 'ytzy03'" link="/ytzy03">
         <i slot="icon" class="icon-bookmark"></i>
         <span slot="label" v-text="'总支部'"></span>

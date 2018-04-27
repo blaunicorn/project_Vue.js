@@ -19,7 +19,7 @@
       // window.localStorage.removeItem('token')
       window.localStorage.removeItem('sid')
       this.$router.replace({
-        name: 'kh01'
+        name: '/'
       })
     },
     methods: {

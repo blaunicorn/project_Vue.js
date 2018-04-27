@@ -108,7 +108,7 @@
       this.$axios.get(this.GLOBAL.URL, {
         params: {
           r: 'summary-article/get-index-article-list',
-          sid: '12345qwe'
+          sid: this.GLOBAL.SID
         }
       }).then((response) => {
         console.log(response.data)
@@ -122,7 +122,7 @@
       this.$axios.get(this.GLOBAL.URL, {
         params: {
           r: 'carousel/get-carousels-by-category',
-          sid: '12345qwe',
+          sid: this.GLOBAL.SID,
           category: '1'
         }
       }).then((response) => {

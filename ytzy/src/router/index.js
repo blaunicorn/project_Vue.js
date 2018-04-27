@@ -27,15 +27,15 @@ export default new Router({
     makePath('search'),
     makePath('search.1'),
     makePath('search.2', true),
-    makePath('ytzy02'),
-    makePath('ytzy03'),
+    makePath('ytzy02', true),
+    makePath('ytzy03', true),
     makePath('ytzy04'),
     makePath('ytzy05'),
-    makePath('ytzy06'),
-    makePath('ytzy07'),
-    makePath('ytzy08'),
-    makePath('ytzy08.5'),
+    makePath('ytzy06', true),
+    makePath('ytzy07', true),
+    makePath('ytzy08', true),
     makePath('ytzy02.1'),
+    makePath('ytzy02.2'),    // 用better scroll 重构左右滑动和上下刷新
     makePath('ytzy10'),
     makePath('ytzy11'),
     makePath('ytzy12'),
@@ -80,6 +80,11 @@ export default new Router({
       path: '/ytzy08.4/:tabIndex',
       name: 'ytzy08.4',
       component: _import('ytzy08.4')
+    },
+    {
+      path: '/ytzy08.5/:tabIndex',
+      name: 'ytzy08.5',
+      component: _import('ytzy08.5')    //  用better scroll 重构后的 要闻 院内公告等滑动tab栏
     },
     {
       path: '/ytzy09/:article_id',
